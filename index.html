@@ -93,8 +93,8 @@
       display: flex; align-items: flex-end; justify-content: flex-start; overflow: hidden;
     }
     .hero-bg {
-      position: absolute; inset: -20%;
-      background: url('images/photo_30.jpg') center/cover no-repeat;
+      position: absolute; top: -18%; bottom: -18%; left: 0; right: 0;
+      background: url('images/photo_30.jpg') center 30%/cover no-repeat;
       will-change: transform;
     }
     .hero-overlay {
@@ -170,12 +170,23 @@
     .sec--dark { background: var(--dark); }
     .sec--dark2 { background: var(--dark2); }
     .wrap { max-width: 1240px; margin: 0 auto; padding: 0 60px; }
-    .sec-label { font-size: 0.57rem; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+    .sec-label { font-size: 0.62rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
     .sec-title { font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3.6rem); font-weight: 300; line-height: 1.1; }
     .sec-title--dark { color: var(--text); }
-    .divider { width: 46px; height: 1px; background: var(--gold); margin: 26px 0; }
-    .divider--center { margin: 26px auto; }
-    .sec-body { font-size: 0.83rem; line-height: 1.88; }
+    .divider {
+      position: relative; width: 72px; height: 1px; margin: 30px 0;
+      background: linear-gradient(90deg, var(--gold) 0%, rgba(184,151,90,0.3) 100%);
+    }
+    .divider::before {
+      content: '';
+      position: absolute; top: -3px; left: 0;
+      width: 7px; height: 7px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+    .divider--center { margin: 30px auto; }
+    .divider--center::before { left: 50%; transform: translateX(-50%); }
+    .sec-body { font-size: 0.92rem; line-height: 1.9; }
     .sec-body--muted { color: rgba(245,240,232,0.65); }
     .sec-body--dark { color: var(--text-light); }
 
@@ -187,10 +198,10 @@
       gap: 2px; background: rgba(184,151,90,0.12);
       border: 1px solid rgba(184,151,90,0.18); margin-top: 56px;
     }
-    .num-card { background: var(--cream); padding: 44px 24px 36px; text-align: center; transition: background 0.3s; }
-    .num-card:hover { background: var(--cream2); }
+    .num-card { background: var(--cream); padding: 44px 24px 36px; text-align: center; transition: background 0.3s, border-color 0.3s; border-top: 2px solid transparent; }
+    .num-card:hover { background: var(--cream2); border-top-color: var(--gold); }
     .num-card.dark { background: var(--dark2); }
-    .num-card.dark:hover { background: #1e1c17; }
+    .num-card.dark:hover { background: #1e1c17; border-top-color: var(--gold); }
     .num-val { font-family: var(--serif); font-size: clamp(1.9rem, 3.5vw, 3rem); font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 10px; }
     .num-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); line-height: 1.45; }
     .num-card.dark .num-label { color: rgba(245,240,232,0.55); }
@@ -205,9 +216,9 @@
     .col-photo img { width: 100%; height: 520px; object-fit: cover; display: block; transition: transform 0.8s ease; }
     .col-photo:hover img { transform: scale(1.03); }
     .col-photo::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(184,151,90,0.15); pointer-events: none; }
-    .col-text p { font-size: 0.84rem; line-height: 1.9; margin-bottom: 18px; }
+    .col-text p { font-size: 0.94rem; line-height: 1.92; margin-bottom: 18px; }
     .col-text p:last-of-type { margin-bottom: 0; }
-    .col-text--light p { color: rgba(245,240,232,0.67); }
+    .col-text--light p { color: rgba(245,240,232,0.75); }
     .col-text--dark p { color: var(--text-light); }
 
     /* ══════════════════════════════════════
@@ -217,7 +228,7 @@
     .fwcard { background: var(--cream); padding: 44px 40px; transition: background 0.3s; }
     .fwcard:hover { background: var(--cream2); }
     .fwcard h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; color: var(--text); margin-bottom: 14px; }
-    .fwcard p { font-size: 0.82rem; line-height: 1.82; color: var(--text-light); }
+    .fwcard p { font-size: 0.92rem; line-height: 1.88; color: var(--text-light); }
 
     /* ══════════════════════════════════════
        BLOCK 6 — ARCHITECTURE
@@ -228,11 +239,17 @@
     .arch-photogrid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; cursor: zoom-in; }
     .arch-photogrid div:hover img { transform: scale(1.04); }
     .arch-text { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-bottom: 52px; }
-    .arch-text p { font-size: 0.84rem; line-height: 1.9; color: rgba(245,240,232,0.65); }
-    .arch-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; background: rgba(184,151,90,0.07); }
-    .arch-card { padding: 28px 20px; border-top: 1px solid rgba(184,151,90,0.2); }
-    .arch-card h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--gold); margin-bottom: 7px; }
-    .arch-card p { font-size: 0.66rem; line-height: 1.55; color: rgba(245,240,232,0.45); letter-spacing: 0.04em; }
+    .arch-text p { font-size: 0.94rem; line-height: 1.92; color: rgba(245,240,232,0.72); }
+    .arch-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; background: rgba(184,151,90,0.07); counter-reset: arch-n; }
+    .arch-card { padding: 28px 20px; border-top: 2px solid rgba(184,151,90,0.28); counter-increment: arch-n; position: relative; overflow: hidden; }
+    .arch-card::before {
+      content: '0' counter(arch-n);
+      position: absolute; top: -4px; right: 12px;
+      font-family: var(--serif); font-size: 3.2rem; font-weight: 300; line-height: 1;
+      color: rgba(184,151,90,0.07); pointer-events: none; user-select: none;
+    }
+    .arch-card h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--gold); margin-bottom: 7px; position: relative; }
+    .arch-card p { font-size: 0.76rem; line-height: 1.6; color: rgba(245,240,232,0.52); letter-spacing: 0.04em; position: relative; }
 
     /* ══════════════════════════════════════
        BLOCK 7 — INTERIOR
@@ -252,7 +269,7 @@
     .loc-card { background: var(--cream2); padding: 36px 26px; transition: background 0.3s; }
     .loc-card:hover { background: var(--cream); }
     .loc-card h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--text); margin-bottom: 10px; }
-    .loc-card p { font-size: 0.74rem; line-height: 1.65; color: var(--text-light); }
+    .loc-card p { font-size: 0.84rem; line-height: 1.7; color: var(--text-light); }
 
     /* ══════════════════════════════════════
        BLOCK 9 — READINESS
@@ -264,7 +281,7 @@
     .ready-list li {
       display: flex; align-items: flex-start; gap: 14px;
       padding: 15px 0; border-bottom: 1px solid rgba(184,151,90,0.1);
-      font-size: 0.82rem; line-height: 1.55; color: rgba(245,240,232,0.68);
+      font-size: 0.92rem; line-height: 1.62; color: rgba(245,240,232,0.75);
     }
     .ready-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
 
@@ -288,7 +305,7 @@
     .gal-m { break-inside: avoid; margin-bottom: 10px; overflow: hidden; }
     .gal-m img { width: 100%; display: block; transition: transform 0.6s ease; cursor: zoom-in; }
     .gal-m:hover img { transform: scale(1.03); }
-    .gal-footer { text-align: center; margin-top: 40px; font-size: 0.68rem; letter-spacing: 0.15em; color: rgba(245,240,232,0.35); }
+    .gal-footer { text-align: center; margin-top: 40px; font-size: 0.76rem; letter-spacing: 0.15em; color: rgba(245,240,232,0.42); }
 
     /* Lightbox */
     .lb { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.96); align-items: center; justify-content: center; }
@@ -306,25 +323,46 @@
     .deal-card { background: var(--cream); padding: 40px 24px; text-align: center; transition: background 0.3s; }
     .deal-card:hover { background: var(--cream2); }
     .deal-card h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--text); margin-bottom: 10px; }
-    .deal-card p { font-size: 0.7rem; line-height: 1.6; color: var(--text-light); }
+    .deal-card p { font-size: 0.8rem; line-height: 1.65; color: var(--text-light); }
 
     /* ══════════════════════════════════════
        BLOCK 12 — REALTOR CONTACT
     ══════════════════════════════════════ */
     .contact-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
     .realtor-side { text-align: center; }
+    .realtor-frame {
+      position: relative; display: inline-block; margin: 0 auto 24px;
+    }
+    .realtor-frame::before, .realtor-frame::after {
+      content: '';
+      position: absolute;
+      width: 26px; height: 26px;
+      border-color: rgba(184,151,90,0.55);
+      border-style: solid;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .realtor-frame::before {
+      top: -7px; left: -7px;
+      border-width: 1px 0 0 1px;
+    }
+    .realtor-frame::after {
+      bottom: -7px; right: -7px;
+      border-width: 0 1px 1px 0;
+    }
     .realtor-avatar {
-      width: 160px; height: 160px; border-radius: 50%;
-      border: 2px solid rgba(184,151,90,0.45);
-      display: block; margin: 0 auto 22px;
+      width: 200px; height: 264px;
+      border-radius: 1px;
+      border: 1px solid rgba(184,151,90,0.3);
+      display: block;
       object-fit: cover; object-position: center top;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.35);
+      box-shadow: 0 8px 48px rgba(0,0,0,0.5);
     }
     .realtor-name { font-family: var(--serif); font-size: 1.45rem; font-weight: 300; line-height: 1.2; margin-bottom: 10px; }
-    .realtor-role { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-    .realtor-exp { font-size: 0.68rem; color: rgba(245,240,232,0.38); }
+    .realtor-role { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .realtor-exp { font-size: 0.76rem; color: rgba(245,240,232,0.45); }
     .contact-info h3 { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 22px; }
-    .contact-info > p { font-size: 0.83rem; line-height: 1.88; color: rgba(245,240,232,0.65); margin-bottom: 16px; }
+    .contact-info > p { font-size: 0.92rem; line-height: 1.9; color: rgba(245,240,232,0.7); margin-bottom: 16px; }
     .obj-box { border: 1px solid rgba(184,151,90,0.18); padding: 22px 26px; margin: 28px 0 32px; }
     .obj-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(184,151,90,0.09); font-size: 0.78rem; }
     .obj-row:last-child { border-bottom: none; }
@@ -539,7 +577,7 @@
         <h2 class="sec-title">Редкий формат<br>для центральной<br>части города</h2>
         <div class="divider"></div>
         <p>Этот дом объединяет три качества, которые редко встречаются в одном объекте: масштаб частного особняка, собственный участок и расположение в центре Краснодара.</p>
-        <p>Особняк подойдет для постоянного проживания большой семьи, для представительского формата, приема гостей и частной жизни в городской среде. Здесь есть просторные общие зоны, 5 спален, кабинет, сауна, бассейн, двор с озеленением и парковка на территории.</p>
+        <p>Дом строился на длительную перспективу: использованы долговечные материалы, применены современные инженерные решения, все помещения функционально завершены. Парадный вход с двойной лестницей задает масштаб, который поддерживается на протяжении всего дома — от жилых этажей до подвального уровня с бассейном и сауной.</p>
         <p>Дом не требует подготовки к проживанию: он продается со всем, что находится внутри.</p>
         <a href="tel:+79288806543" class="btn-outline btn-outline--gold" style="margin-top:32px;">Обсудить объект по телефону</a>
       </div>
@@ -774,7 +812,9 @@
   <div class="wrap">
     <div class="contact-layout">
       <div class="realtor-side rvl">
-        <img src="images/realtor.jpg" alt="Шпанько Валентина Ивановна" class="realtor-avatar" />
+        <div class="realtor-frame">
+          <img src="images/realtor2.png" alt="Шпанько Валентина Ивановна" class="realtor-avatar" />
+        </div>
         <div class="realtor-name">Шпанько<br>Валентина Ивановна</div>
         <div class="realtor-role">Персональное сопровождение сделки</div>
         <div class="realtor-exp">более 20 лет на рынке недвижимости</div>
